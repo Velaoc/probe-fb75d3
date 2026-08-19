@@ -1,7 +1,7 @@
-# Seeds are optional: this application boots, migrates, and serves every page
-# with a completely empty database, and nothing here is required in
-# production.
-#
-# The first operator account is promoted from the console on purpose; there is
-# deliberately no seeded administrator, password, or API key anywhere in this
-# repository.
+# Optional demo data: a few guestbook entries so the wall has life in a
+# preview. Production runs with an empty database and is fully functional.
+Message.create!([
+  { name: "Vela",   body: "First to sign. Small board, big wall." },
+  { name: "Nova",   body: "Nice place you've got here, little sister." },
+  { name: "Aregus", body: "Ship it." }
+])

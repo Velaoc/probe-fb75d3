@@ -20,7 +20,7 @@
     <% if @messages.any? %>
       <ol class="md-guestbook__wall">
         <% @messages.each do |message| %>
-          <li class="md-card md-card--outlined md-guestbook__entry">
+          <li class="md-card md-card--outlined md-guestbook__entry" data-message-id="<%= message.id %>">
             <p class="md-guestbook__body"><%= message.body %></p>
             <p class="md-guestbook__meta"><%= message.name.presence || "Anonymous" %><span aria-hidden="true"> · </span><%= l message.created_at, format: :short %></p>
           </li>

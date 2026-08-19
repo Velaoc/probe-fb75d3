@@ -1,0 +1,33 @@
+<% title "Guestbook" %>
+<% identity = Rails.configuration.x.foundation %>
+
+<section class="md-section" aria-labelledby="guestbook-title">
+  <div class="md-section__inner">
+    <p class="md-section__eyebrow"><%= identity[:application_name] %></p>
+    <h1 id="guestbook-title" class="md-section__heading">Leave a note.</h1>
+    <p class="md-section__lede">A wall of short messages, newest first. No account needed — just write something.</p>
+
+    <div class="md-card md-card--elevated md-guestbook__form">
+      <%= form_with model: @message, url: root_path, class: "md-form" do |form| %>
+        <%= md_text_field(form, :name, label: "Name (optional)", hint: "How should we sign it?") %>
+        <%= md_text_field(form, :body, label: "Message", hint: "Up to 500 characters.", type: :textarea) %>
+        <div class="md-actions">
+          <%= md_button "Sign the guestbook", icon: :send, type: "submit" %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if @messages.any? %>
+      <ol class="md-guestbook__wall">
+        <% @messages.each do |message| %>
+          <li class="md-card md-card--outlined md-guestbook__entry">
+            <p class="md-guestbook__body"><%= message.body %></p>
+            <p class="md-guestbook__meta"><%= message.name.presence || "Anonymous" %><span aria-hidden="true"> · </span><%= l message.created_at, format: :short %></p>
+          </li>
+        <% end %>
+      </ol>
+    <% else %>
+      <p class="md-section__lede">No messages yet — be the first to sign.</p>
+    <% end %>
+  </div>
+</section>

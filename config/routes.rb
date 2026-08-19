@@ -130,6 +130,7 @@ Rails.application.routes.draw do
     get "session", to: "sessions#show", as: :session
   end
 
-  # Minimal landing page until the M7 marketing set replaces it.
-  root "foundation/home#show"
+  # The one-page guestbook owns the root: sign a message and read the wall.
+  root "guestbook#index"
+  post "/", to: "guestbook#create", as: :guestbook_entries
 end

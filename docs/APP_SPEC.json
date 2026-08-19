@@ -1,0 +1,29 @@
+{
+  "name": "probe-fb75d3",
+  "purpose": "A one-page guestbook where visitors type a short message and see the wall of messages, newest first.",
+  "actors": [
+    "Visitor"
+  ],
+  "entities": [
+    {
+      "name": "Message",
+      "relationships": [
+        "name optional, body required and capped at 500 characters",
+        "wall ordered newest first by created_at"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "name": "Sign the guestbook",
+      "description": "A visitor types an optional name and a short message; it is saved and appears at the top of the wall."
+    },
+    {
+      "name": "Read the wall",
+      "description": "The root page shows the sign form above the most recent messages, newest first."
+    }
+  ],
+  "modules": [],
+  "integrations": [],
+  "seed_demo": "A few sample guestbook entries so a fresh preview shows a populated wall."
+}
